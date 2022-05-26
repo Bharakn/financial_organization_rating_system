@@ -25,7 +25,7 @@ public class OrganizationRep
   private String orgLocation;
   @Column(name="Password",nullable = false,length=6)
   private String password;
-  @Column(name="Net_Capital",nullable = false,columnDefinition ="numeric(5,2)")
+  @Column(name="Netcapital_in_crore",nullable = false,columnDefinition ="numeric(5,2)")
   private double orgNetCapital;
   @Column(name="Economic_Risk_Score")
   private int orgEconomicRiskScore;
