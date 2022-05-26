@@ -9,6 +9,7 @@ public class FinancialOrgRatingSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FinancialOrgRatingSystemApplication.class, args);
 		System.out.println("hello");
+		System.out.println("hi");
 	}
 
 }
