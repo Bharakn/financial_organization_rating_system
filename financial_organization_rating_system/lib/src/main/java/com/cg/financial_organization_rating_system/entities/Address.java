@@ -2,21 +2,30 @@ package com.cg.financial_organization_rating_system.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Address_Details")
+@Table(name="address_details")
 public class Address 
 {
 	@Id
-	@Column(name="Pincode",length=6)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int adrId;
+	@Column(name="pincode",length=6)
 	private int pincode;
-	@Column(name="City",length=20)
+	@Column(name="city",length=20)
 	private String city;
-	@Column(name="State")
+	@Column(name="state")
 	private String state;
-	
+	public int getAdrId() {
+		return adrId;
+	}
+	public void setAdrId(int adrId) {
+		this.adrId = adrId;
+	}
 	public int getPincode() {
 		return pincode;
 	}
@@ -35,5 +44,7 @@ public class Address
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	
 
 }
