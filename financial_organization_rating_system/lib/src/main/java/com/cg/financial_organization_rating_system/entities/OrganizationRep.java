@@ -34,6 +34,8 @@ public class OrganizationRep
   @Column(name="Rating")
   private int orgRating;
   
+ 
+  
 public int getOrgRating() {
 	return orgRating;
 }
