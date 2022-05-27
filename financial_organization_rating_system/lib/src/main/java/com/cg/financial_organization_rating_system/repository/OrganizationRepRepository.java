@@ -7,5 +7,5 @@ import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 
 @Repository
 public interface OrganizationRepRepository extends JpaRepository<OrganizationRep, Integer>{
-
+  
 }
