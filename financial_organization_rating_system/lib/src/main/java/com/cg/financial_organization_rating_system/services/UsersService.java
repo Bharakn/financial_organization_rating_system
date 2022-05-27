@@ -1,5 +1,7 @@
 package com.cg.financial_organization_rating_system.services;
 
-public interface UsersService {
+import com.cg.financial_organization_rating_system.entities.Users;
 
+public interface UsersService {
+void userRegistration(Users user);
 }
