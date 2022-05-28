@@ -1,11 +1,14 @@
 package com.cg.financial_organization_rating_system.services;
 
-import com.cg.financial_organization_rating_system.entities.Users;
+import java.util.List;
 
-<<<<<<< HEAD
-public interface UsersService {
-void userRegistration(Users user);
-=======
-	
->>>>>>> 016cda111cd00b52aced1c399595149c45bc4355
+import com.cg.financial_organization_rating_system.dto.GetUserDetailsDto;
+import com.cg.financial_organization_rating_system.dto.UsersRegistrationDto;
+import com.cg.financial_organization_rating_system.entities.OrganizationRep;
+
+
+public interface UsersService{
+int userRegistration(UsersRegistrationDto userdto);
+List<OrganizationRep> browseByEntity();
+
 }

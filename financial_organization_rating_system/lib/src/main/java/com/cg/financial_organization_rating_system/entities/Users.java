@@ -48,4 +48,27 @@ public class Users {
 	public long getUserContactDetails() {
 		return userContactDetails;
 	}
+
+	public void setUserContactDetails(long userContactDetails) {
+		this.userContactDetails = userContactDetails;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+
+
 }
