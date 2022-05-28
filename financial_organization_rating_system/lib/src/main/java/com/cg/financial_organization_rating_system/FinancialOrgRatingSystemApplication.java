@@ -10,6 +10,8 @@ public class FinancialOrgRatingSystemApplication {
 		SpringApplication.run(FinancialOrgRatingSystemApplication.class, args);
 		System.out.println("It is ready to use");
 		System.out.println("this is bharath");
+		System.out.println("update1");
+		System.out.println("update2");
 	}
 
 }
