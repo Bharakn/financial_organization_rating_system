@@ -39,10 +39,12 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public List<OrganizationRep> browseByEntity() {
+	public void userRegistration(Users user) {
+		// TODO Auto-generated method stub
 		
-		return orgreprepo.findAll();
 	}
+
+	
 
 	
 
