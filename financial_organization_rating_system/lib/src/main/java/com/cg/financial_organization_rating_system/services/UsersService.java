@@ -1,8 +1,13 @@
 package com.cg.financial_organization_rating_system.services;
 
-import com.cg.financial_organization_rating_system.entities.Users;
+import java.util.List;
+
+import com.cg.financial_organization_rating_system.dto.UsersRegistrationDto;
+import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 
 
-public interface UsersService {
-void userRegistration(Users user);
+public interface UsersService{
+int userRegistration(UsersRegistrationDto userdto);
+List<OrganizationRep> browseByEntity();
+
 }
