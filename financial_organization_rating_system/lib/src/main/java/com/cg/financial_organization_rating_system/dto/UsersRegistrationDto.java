@@ -1,21 +1,14 @@
 package com.cg.financial_organization_rating_system.dto;
 
 public class UsersRegistrationDto {
-private int userId;
+
 private String userName;
 private long userContactDetails;
 private String password;
-private int adrId;
+private int pincode;
 
 
-public int getUserId() {
-	return userId;
-}
 
-
-public void setUserId(int userId) {
-	this.userId = userId;
-}
 
 
 public String getUserName() {
@@ -48,21 +41,16 @@ public void setPassword(String password) {
 }
 
 
-public int getAdrId() {
-	return adrId;
+public int getPincode() {
+	return pincode;
 }
 
 
-public void setAdrId(int adrId) {
-	this.adrId = adrId;
+public void setPincode(int pincode) {
+	this.pincode = pincode;
 }
 
 
-@Override
-public String toString() {
-	return "UsersRegistrationDto [userName=" + userName + ", userContactDetails=" + userContactDetails + ", password="
-			+ password + ", adrId=" + adrId + "]";
-}
 
 
 }
