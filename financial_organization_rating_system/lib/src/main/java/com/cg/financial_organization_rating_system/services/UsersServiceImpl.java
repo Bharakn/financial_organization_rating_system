@@ -1,6 +1,7 @@
 package com.cg.financial_organization_rating_system.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,22 +26,34 @@ public class UsersServiceImpl implements UsersService {
 	@Autowired
 	OrganizationRepRepository orgreprepo;
 
-	/*@Override
+	@Override
 	public int userRegistration(UsersRegistrationDto userdto) {
-	Address address = adrsrepo.getAdrsById(userdto.getAdrId());
-	Users usr = new Users();
-	usr.setUserName(userdto.getUserName());
-	usr.setUserContactDetails(userdto.getUserContactDetails());
-	usr.setPassword(userdto.getPassword());
-	usr.setAddress(address);
-	userrepo.save(usr);
-	return usr.getUserId();
 		
-	}*/
+		Address address = adrsrepo.getAdrsById(userdto.getPincode());
+		Users usr = new Users();
+		usr.setUserName(userdto.getUserName());
+		usr.setUserContactDetails(userdto.getUserContactDetails());
+		usr.setPassword(userdto.getPassword());
+		usr.setAddress(address);
+		userrepo.save(usr);
+		
+		return usr.getUserId();
+	}
 
 	@Override
-	public void userRegistration(Users user) {
-		// TODO Auto-generated method stub
-		
+	public List<OrganizationRep> browseByEntity() {
+	return orgreprepo.findAll();
 	}
+
+	@Override
+	public List<Users> getUserDetails() {
+		return userrepo.findAll();
+	}
+
+	@Override
+	public Optional<OrganizationRep> browseByEntityId(int orgId) {
+		return orgreprepo.findById(orgId);
+	}
+
+	
 }
