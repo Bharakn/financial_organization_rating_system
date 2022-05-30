@@ -10,6 +10,7 @@ import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 public interface OrganizationRepRepository extends JpaRepository<OrganizationRep, Integer>{
 @Query(value="select org from OrganizationRep org where org.orgId=?1")
 OrganizationRep getOrgRepById(int orgId); 
-	
+@Query(value="select org from OrganizationRep org where org.orgId=?1")
+OrganizationRep updateDetails(int orgId);
 }
 

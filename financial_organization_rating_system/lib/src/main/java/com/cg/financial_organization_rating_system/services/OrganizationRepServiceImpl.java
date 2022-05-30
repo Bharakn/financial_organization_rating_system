@@ -3,7 +3,6 @@ package com.cg.financial_organization_rating_system.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.financial_organization_rating_system.dto.OrgRepLoginDto;
 import com.cg.financial_organization_rating_system.dto.OrganizationRepRegistrationDto;
 import com.cg.financial_organization_rating_system.dto.OrganizationRepUpdateDetailsDto;
 import com.cg.financial_organization_rating_system.entities.LoginDetails;
