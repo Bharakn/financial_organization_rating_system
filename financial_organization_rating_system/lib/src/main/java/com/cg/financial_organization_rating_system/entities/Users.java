@@ -26,7 +26,7 @@ public class Users {
 	  private String password;
 
 	  @OneToOne
-	  @JoinColumn(name="adrId")
+	  @JoinColumn(name="pincode")
 	  private Address address;
 
 	public int getUserId() {
