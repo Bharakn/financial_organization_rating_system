@@ -36,7 +36,7 @@ public class UsersController {
 		
 		return new ResponseEntity<String>("User Registered Successfully andyour userId is = "+userId,HttpStatus.OK);
 	}
-	@GetMapping
+	@GetMapping("/RegisteredUsers")
 	public ResponseEntity<List<Users>> getUsersDetails()
 
 	{
@@ -51,7 +51,7 @@ public class UsersController {
 		return new ResponseEntity<List<OrganizationRep>>(orgrep,HttpStatus.OK);
 		
 	}
-	@GetMapping("/browsebyentityId/Id{orgId}")
+	@GetMapping("/browsebyOrgId/Id{orgId}")
 	public ResponseEntity<Optional<OrganizationRep>> getDetailsByEntityId(@PathVariable int orgId)
 	{
 		Optional<OrganizationRep> orgrep =userservice.browseByEntityId(orgId);
