@@ -53,7 +53,12 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public Optional<OrganizationRep> browseByEntityId(int orgId) {
 		return orgreprepo.findById(orgId);
+	
 	}
+
+	
+
+	
 
 	
 }

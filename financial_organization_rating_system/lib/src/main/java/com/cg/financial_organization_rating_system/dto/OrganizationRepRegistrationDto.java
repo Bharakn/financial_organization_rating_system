@@ -5,9 +5,7 @@ public class OrganizationRepRegistrationDto {
 	private long orgContactDetails;
 	private String orgLocation;
 	private String password;
-	private double orgNetCapital;
-	private int orgEconomicRiskScore;
-	private int orgIndustryRiskScore;
+
 	public String getOrgname() {
 		return orgname;
 	}
@@ -32,24 +30,4 @@ public class OrganizationRepRegistrationDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public double getOrgNetCapital() {
-		return orgNetCapital;
-	}
-	public void setOrgNetCapital(double orgNetCapital) {
-		this.orgNetCapital = orgNetCapital;
-	}
-	public int getOrgEconomicRiskScore() {
-		return orgEconomicRiskScore;
-	}
-	public void setOrgEconomicRiskScore(int orgEconomicRiskScore) {
-		this.orgEconomicRiskScore = orgEconomicRiskScore;
-	}
-	public int getOrgIndustryRiskScore() {
-		return orgIndustryRiskScore;
-	}
-	public void setOrgIndustryRiskScore(int orgIndustryRiskScore) {
-		this.orgIndustryRiskScore = orgIndustryRiskScore;
-	}
-	
-
 }
