@@ -1,7 +1,5 @@
 package com.cg.financial_organization_rating_system.services;
 import java.util.*;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,32 +12,23 @@ public class FinanceTeamServiceImpl implements FinanceTeamService {
 	@Autowired
 	FinanceTeamRepository financerepo;
 	//@Autowired
-	FinanceTeam finance1;
-@Override
-	public int addMem(FinanceTeam finance) {
-		FinanceTeam financef=new FinanceTeam();
-		financef.setAdminId(finance.getAdminId());
-		financef.setPassword(finance.getPassword());
-		financerepo.save(financef);
-		return finance.getSlno();
+
+	@Override
+	public void addMem(FinanceTeam finance) {
+		FinanceTeam financet=new FinanceTeam();
+		financet.setAdminId(finance.getAdminId());
+		financet.setPassword(finance.getPassword());
+		financerepo.save(financet);
 	}
-List<FinanceTeam> list;
-@Override
 
-public List<FinanceTeam> getDetailsById() {
-list=financerepo.findAll();
+	@Override
+	public List<FinanceTeam> getAllDetails() {
+		List<FinanceTeam> list=financerepo.findAll();
+		return list;
+	}
 
-	return list;
-}
-@Override
-public List<FinanceTeam> getAllDetails(String id) {
 	
-List<FinanceTeam>list1=list.stream().filter(team->team.getAdminId()==id).collect(Collectors.toList());
-
-return list1;
-
 
 }
 	
 
-}

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +27,7 @@ public class FinanceTeamController {
 	}
 	@GetMapping("/get")
 	public List<FinanceTeam> getalldetails() {
-		return financeservice.getDetailsById();
+		return financeservice.getAllDetails();
 	}
-	@GetMapping("/get/{id}")
-	public List<FinanceTeam> getTeamById(@PathVariable String id){
-		return financeservice.getAllDetails(id);
-	}
+	
 }

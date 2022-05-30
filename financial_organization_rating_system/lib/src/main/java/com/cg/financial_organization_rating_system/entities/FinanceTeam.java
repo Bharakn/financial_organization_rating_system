@@ -12,34 +12,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="finance_team")
 public class FinanceTeam {
-
 	   @Id
-	   @GeneratedValue(strategy = GenerationType.IDENTITY)
-	   @Column(name="slno")
-	   private int slno;
-	   @Column(name="AdminID",nullable=false,length=20)
-	   private String adminId;
-	   @Column(name="Password",nullable = false,length=20)
-	   private String password;
-	  /* @OneToOne
-	   @JoinColumn(name="orgId")
-	   private OrganizationRep organizationrep;
-	   public OrganizationRep getOrganizationrep() {
-		return organizationrep;
-	}
-	public void setOrganizationrep(OrganizationRep organizationrep) {
-		this.organizationrep = organizationrep;
-	}*/
-	public int getSlno() {
-		return slno;
-	}
-	public void setSlno(int slno) {
-		this.slno = slno;
-	}
-	public String getAdminId() {
+	   @Column(name="AdminID",length=5)
+	   private int adminId;
+	   public int getAdminId() {
 		return adminId;
 	}
-	public void setAdminId(String adminId) {
+	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
 	public String getPassword() {
@@ -47,5 +26,9 @@ public class FinanceTeam {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}  
+	}
+	@Column(name="Password",nullable = false,length=20)
+	   private String password;
+	  
+	
 }
