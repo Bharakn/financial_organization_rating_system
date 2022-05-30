@@ -10,7 +10,7 @@ public class OrganizationRepNotFoundException extends RuntimeException{
 
 	public OrganizationRepNotFoundException(String message) {
 		super(message);
-	
+	System.out.println("exception1");
 	}
 	
 
