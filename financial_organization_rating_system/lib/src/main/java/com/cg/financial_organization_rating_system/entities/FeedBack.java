@@ -19,9 +19,9 @@ public class FeedBack {
 	private String orgName;
 	@Column(name="userName",nullable=false,length = 20)
 	private String userName;
-	@Column(name="feedback_orgDescription",nullable=false,length = 10,columnDefinition = " CHECK (feedbackByOrgDescription IN ('EXCELLENT', 'GOOD', 'AVERAGE','BAD'))")
+	@Column(name="feedback_orgDescription",nullable=false,length = 10)
 	private String feedbackByOrgDescription;
-	@Column(name="feedback_orgRating",nullable=false,length = 10,columnDefinition = " CHECK (feedbackByOrgRating IN ('EXCELLENT', 'GOOD', 'AVERAGE','BAD'))")
+	@Column(name="feedback_orgRating",nullable=false,length = 10)
 	private String feedbackByOrgRating;
 	@Column(name="comments",length=40)
 	private String comment;
