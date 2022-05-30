@@ -44,12 +44,7 @@ public class OrganizationRepController {
 		return new ResponseEntity<String>("Thank you for updating organization details ",HttpStatus.OK);
 	}
 
-	@GetMapping("/login")
-	public ResponseEntity<String> login(@RequestBody OrgRepLoginDto orgldto)
-	{
-		loginservice.login(orgldto.getOrgId(),orgldto.getPassword());
-		return new ResponseEntity<String>("Login sucessfull",HttpStatus.OK);
-	}
+	
 	
 }
 
