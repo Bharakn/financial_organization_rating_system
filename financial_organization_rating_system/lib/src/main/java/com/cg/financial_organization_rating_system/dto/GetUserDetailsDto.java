@@ -5,7 +5,7 @@ public class GetUserDetailsDto {
 	private String userName;
 	private long userContactDetails;
 	private String password;
-	private int adrId;
+	
 	private int pincode;
 	private String city;
 	private String state;
@@ -33,12 +33,8 @@ public class GetUserDetailsDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getAdrId() {
-		return adrId;
-	}
-	public void setAdrId(int adrId) {
-		this.adrId = adrId;
-	}
+	
+	
 	public int getPincode() {
 		return pincode;
 	}
@@ -57,11 +53,5 @@ public class GetUserDetailsDto {
 	public void setState(String state) {
 		this.state = state;
 	}
-	@Override
-	public String toString() {
-		return "GetUserDetails [userId=" + userId + ", userName=" + userName + ", userContactDetails="
-				+ userContactDetails + ", password=" + password + ", adrId=" + adrId + ", pincode=" + pincode
-				+ ", city=" + city + ", state=" + state + "]";
-	}
-
+	
 }
