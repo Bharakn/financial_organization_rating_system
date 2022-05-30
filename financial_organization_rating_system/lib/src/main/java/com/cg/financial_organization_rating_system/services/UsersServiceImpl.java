@@ -25,7 +25,7 @@ public class UsersServiceImpl implements UsersService {
 	@Autowired
 	OrganizationRepRepository orgreprepo;
 
-	@Override
+	/*@Override
 	public int userRegistration(UsersRegistrationDto userdto) {
 	Address address = adrsrepo.getAdrsById(userdto.getAdrId());
 	Users usr = new Users();
@@ -36,14 +36,11 @@ public class UsersServiceImpl implements UsersService {
 	userrepo.save(usr);
 	return usr.getUserId();
 		
-	}
+	}*/
 
 	@Override
-	public List<OrganizationRep> browseByEntity() {
+	public void userRegistration(Users user) {
+		// TODO Auto-generated method stub
 		
-		return orgreprepo.findAll();
 	}
-
-	
-
 }

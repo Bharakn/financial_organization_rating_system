@@ -27,12 +27,12 @@ public class UsersController {
 	
 	
 	
-	@PostMapping
+/*	@PostMapping
 	public ResponseEntity<String> userRegistration(@RequestBody UsersRegistrationDto userDto)
 	{
 		userservice.userRegistration(userDto);
 		return new ResponseEntity<String>("User Registered Successfully",HttpStatus.OK);
-	}
+	}*/
 	
 	
 	
