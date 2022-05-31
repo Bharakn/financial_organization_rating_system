@@ -31,4 +31,12 @@ public class OrganizationExceptionHandler
 	{
 	   return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND); 	
 	}
+	@ExceptionHandler(value=OrganizationRepNotFoundException.class)
+	public ResponseEntity<String> exception(OrganizationRepNotFoundException exception){  
+		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND); 	
+	}
+	@ExceptionHandler(value=FinanceTeamNotFoundException.class)
+	public ResponseEntity<String> exception(FinanceTeamNotFoundException exception){  
+		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND); 	
+	}
 }
