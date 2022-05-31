@@ -25,6 +25,8 @@ public class OrganizationRep
   private String orgLocation;
   @Column(name="Password",nullable = false,length=6)
   private String password;
+  @Column(name="approvalStatus",length=10)
+  private String approvalStatus;
   @Column(name="Netcapital_in_crore",nullable = false,columnDefinition ="numeric(5,2)")
   private double orgNetCapital;
   @Column(name="Economic_Risk_Score")
@@ -65,6 +67,12 @@ public String getPassword() {
 }
 public void setPassword(String password) {
 	this.password = password;
+}
+public String getApprovalStatus() {
+	return approvalStatus;
+}
+public void setApprovalStatus(String approvalStatus) {
+	this.approvalStatus = approvalStatus;
 }
 public double getOrgNetCapital() {
 	return orgNetCapital;

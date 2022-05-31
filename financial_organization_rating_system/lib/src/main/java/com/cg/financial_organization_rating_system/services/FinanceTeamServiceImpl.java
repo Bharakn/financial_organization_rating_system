@@ -41,23 +41,25 @@ public class FinanceTeamServiceImpl implements FinanceTeamService {
 		return list;
 	}
 
+
 	@Override
-	public void updateRating(UpdateRatingDto updateratingdto) {
-		List<OrganizationRep> list2 = orgrepo.findAll();
-		for (OrganizationRep org : list2) {
+	public List<OrganizationRep> validation() {
+		return orgrepo.findAll();
+	}
+
+	@Override
+	public void updateStatus(UpdateRatingDto updateratingdto) {
+		List<OrganizationRep> list3 = orgrepo.findAll();
+		for (OrganizationRep org : list3) {
 			if (org.getOrgId() != updateratingdto.getOrgId()) {
 				throw new OrganizationRepNotFoundException("organization id is invalid");
 			}
 		}
 		OrganizationRep orgrep = orgrepo.getOrgRepById(updateratingdto.getOrgId());
+		orgrep.setApprovalStatus(updateratingdto.getApprovalStaus());
 		orgrep.setOrgRating(updateratingdto.getRating());
 		orgrepo.save(orgrep);
-
-	}
-
-	@Override
-	public List<OrganizationRep> validation() {
-		return orgrepo.findAll();
+		
 	}
 
 }

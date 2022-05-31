@@ -10,8 +10,8 @@ public interface FinanceTeamService {
 
 	public List<FinanceTeam> getAllDetails();
 
-	public void updateRating(UpdateRatingDto updateratingdto);
-
 	public List<OrganizationRep> validation();
+	
+	void updateStatus(UpdateRatingDto updateratingdto);
 
 }

@@ -48,12 +48,7 @@ public class UsersController {
 		return new ResponseEntity<List<Users>>(userlist,HttpStatus.OK);
 	}
 	
-	/*
-	 * @GetMapping("/login") public ResponseEntity<String> login(@RequestBody
-	 * UserLoginDto userlogindto) {
-	 * loginservice.login(userlogindto.getUserId(),userlogindto.getPassword());
-	 * return new ResponseEntity<String>("Login sucessfull",HttpStatus.OK); }
-	 */
+	
      
 	@GetMapping("/browsebyentity")
 	public ResponseEntity<List<OrganizationRep>> getDetailsByEntity()

@@ -40,10 +40,12 @@ public class FinanceTeamController {
 
 	}
 
-	@PutMapping("/updaterating")
-	public ResponseEntity<String> updaterating(@RequestBody UpdateRatingDto rating) {
-		financeservice.updateRating(rating);
-		return new ResponseEntity<String>("rating updated", HttpStatus.OK);
+     
+
+	@PutMapping("/updateApprovalstatusandRating")
+	public ResponseEntity<String> updateApprovalStaus(@RequestBody UpdateRatingDto status) {
+		financeservice.updateStatus(status);
+		return new ResponseEntity<String>("status and rating updated ", HttpStatus.OK);
 	}
 
 }
