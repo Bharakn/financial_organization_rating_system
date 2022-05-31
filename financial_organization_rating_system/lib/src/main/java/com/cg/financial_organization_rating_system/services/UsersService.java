@@ -13,5 +13,6 @@ public interface UsersService {
 	List<OrganizationRep> browseByEntity();
 	List<Users> getUserDetails();
 	Optional<OrganizationRep> browseByEntityId(int orgId);
+	void deleteUser(int userId);
 	
 }
