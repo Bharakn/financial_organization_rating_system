@@ -17,6 +17,7 @@ import com.cg.financial_organization_rating_system.exceptions.InvalidUserNameExc
 import com.cg.financial_organization_rating_system.exceptions.OrganizationIdNotFound;
 import com.cg.financial_organization_rating_system.repository.LoginRepository;
 import com.cg.financial_organization_rating_system.repository.OrganizationRepRepository;
+import com.cg.financial_organization_rating_system.utils.PasswordManagement;
 
 @Service
 public class OrganizationRepServiceImpl implements OrganizationRepService
@@ -34,8 +35,6 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 			throw new InvalidUserNameException("Invalid user name");
 		orgrep.setOrgName(orgrepdto.getOrgname());
 		
-	//	if(orgrepdto.getOrgContactDetails()==0)
-		//	throw new InvalidContactDetailsException("Invalid contact details");
 		orgrep.setOrgContactDetails(orgrepdto.getOrgContactDetails());
 		
 		if(orgrepdto.getOrgLocation()==null||orgrepdto.getOrgLocation()==" ")
@@ -44,12 +43,12 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 		
 		if(orgrepdto.getPassword()==null||orgrepdto.getPassword()==" ")
 			throw new InvalidPasswordException("Invalid password");
-		orgrep.setPassword(orgrepdto.getPassword());
+		orgrep.setPassword(PasswordManagement.encryptedPassword(orgrepdto.getPassword()));
 		
 		orgrepo.save(orgrep);
 		
 		LoginDetails login=new LoginDetails();
-		login.setPassword(orgrepdto.getPassword());
+		login.setPassword(PasswordManagement.encryptedPassword(orgrepdto.getPassword()));
 		login.setLoginId(orgrep.getOrgId());
 		login.setRole("OrganizationRep");
 		loginrepo.save(login);
