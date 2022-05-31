@@ -7,6 +7,9 @@ import com.cg.financial_organization_rating_system.dto.OrganizationRepRegistrati
 import com.cg.financial_organization_rating_system.dto.OrganizationRepUpdateDetailsDto;
 import com.cg.financial_organization_rating_system.entities.LoginDetails;
 import com.cg.financial_organization_rating_system.entities.OrganizationRep;
+import com.cg.financial_organization_rating_system.exceptions.InvalidContactDetailsException;
+import com.cg.financial_organization_rating_system.exceptions.InvalidPasswordException;
+import com.cg.financial_organization_rating_system.exceptions.InvalidUserNameException;
 import com.cg.financial_organization_rating_system.repository.LoginRepository;
 import com.cg.financial_organization_rating_system.repository.OrganizationRepRepository;
 
@@ -22,10 +25,22 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 	@Override
 	public int addOrganizationRep(OrganizationRepRegistrationDto orgrepdto) {
 		OrganizationRep orgrep=new OrganizationRep();
+		if(orgrepdto.getOrgname()==null||orgrepdto.getOrgname()==" ")
+			throw new InvalidUserNameException("Invalid user name");
 		orgrep.setOrgName(orgrepdto.getOrgname());
+		
+		if(orgrepdto.getOrgContactDetails()!=10||orgrepdto.getOrgContactDetails()==0)
+			throw new InvalidContactDetailsException("Invalid contact details");
 		orgrep.setOrgContactDetails(orgrepdto.getOrgContactDetails());
+		
+		if(orgrepdto.getOrgLocation()==null||orgrepdto.getOrgLocation()==" ")
+			throw new InvalidUserNameException("Invalid user name");
 		orgrep.setOrgLocation(orgrepdto.getOrgLocation());
+		
+		if(orgrepdto.getPassword()==null||orgrepdto.getPassword()==" ")
+			throw new InvalidPasswordException("Invalid password");
 		orgrep.setPassword(orgrepdto.getPassword());
+		
 		orgrepo.save(orgrep);
 		
 		LoginDetails login=new LoginDetails();
@@ -47,6 +62,13 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 		orgrep.setOrgNetCapital(orgrepudto.getOrgNetCapital());
 		orgrepo.save(orgrep);
 		
+		
+	}
+
+
+	@Override
+	public void deleteOrgDetails(OrganizationRep orgrep) {
+		orgrepo.delete(orgrep);
 		
 	}
 

@@ -1,14 +1,14 @@
 package com.cg.financial_organization_rating_system.exceptions;
 
-
-public class OrganizationRepNotFoundException extends RuntimeException{
+public class InvalidContactDetailsException extends RuntimeException
+{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public OrganizationRepNotFoundException(String message) {
+	public InvalidContactDetailsException(String message) {
 		super(message);
 	}
 	
