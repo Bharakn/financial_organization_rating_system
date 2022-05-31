@@ -1,8 +1,6 @@
 package com.cg.financial_organization_rating_system.services;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +20,7 @@ import com.cg.financial_organization_rating_system.repository.AddressRepository;
 import com.cg.financial_organization_rating_system.repository.LoginRepository;
 import com.cg.financial_organization_rating_system.repository.OrganizationRepRepository;
 import com.cg.financial_organization_rating_system.repository.UsersRepository;
+import com.cg.financial_organization_rating_system.utils.PasswordManagement;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -53,7 +52,7 @@ public class UsersServiceImpl implements UsersService {
 		if (userdto.getPassword().length() != 6 || userdto.getPassword() == null) {
 			throw new InvalidPasswordException("Entered password is invalid please re-enter valid password");
 		}
-		usr.setPassword(userdto.getPassword());
+		usr.setPassword(PasswordManagement.encryptedPassword(userdto.getPassword()));
 		if (address == null)
 			throw new UserAddressNotFoundException("User Address is not found.....");
 		usr.setAddress(address);
@@ -61,7 +60,7 @@ public class UsersServiceImpl implements UsersService {
 		userrepo.save(usr);
 
 		LoginDetails login = new LoginDetails();
-		login.setPassword(userdto.getPassword());
+		login.setPassword(PasswordManagement.encryptedPassword(userdto.getPassword()));
 		login.setLoginId(usr.getUserId());
 		login.setRole("Users");
 		loginrepo.save(login);
@@ -71,25 +70,30 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public List<OrganizationRep> browseByEntity() {
-		List<OrganizationRep>orgreplist = orgreprepo.findAll();
-		if(orgreplist.isEmpty())
+		List<OrganizationRep>orgrepList = orgreprepo.findAll();
+		if(orgrepList.isEmpty())
 		{
 			throw new OrganizationRepEntityNotFoundException("No Organization to display...");
 		}
-		return orgreprepo.findAll();
+		return orgrepList;
 	}
 
 	@Override
 	public List<Users> getUserDetails() {
-		return userrepo.findAll();
+		List<Users>userList=userrepo.findAll();
+		if(userList.isEmpty())
+		{
+			throw new UserNotFoundException("User Not Found.....");
+		}
+		return userList;
 	}
 
 	@Override
-	public Optional<OrganizationRep> browseByEntityId(int orgId) {
+	public OrganizationRep browseByEntityId(int orgId) {
 		OrganizationRep orgrep = orgreprepo.getOrgRepById(orgId);
-		if (orgrep.getOrgId() == 0)
+		if (orgrep == null)
 			throw new OrganizationRepNotFoundException("Entered OrgId is not present ....");
-		return orgreprepo.findById(orgId);
+		return orgrep;
 
 	}
 

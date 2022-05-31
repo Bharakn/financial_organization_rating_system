@@ -1,8 +1,6 @@
 package com.cg.financial_organization_rating_system.controllers;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,10 +63,10 @@ public class UsersController {
 		
 	}
 	@GetMapping("/browsebyOrgId/Id{orgId}")
-	public ResponseEntity<Optional<OrganizationRep>> getDetailsByEntityId(@PathVariable int orgId)
+	public ResponseEntity <OrganizationRep> getDetailsByEntityId(@PathVariable int orgId)
 	{
-		Optional<OrganizationRep> orgrep =userservice.browseByEntityId(orgId);
-		return new ResponseEntity<Optional<OrganizationRep>>(orgrep,HttpStatus.OK);
+		OrganizationRep orgrep =userservice.browseByEntityId(orgId);
+		return new ResponseEntity<OrganizationRep>(orgrep,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/id/{userId}")
