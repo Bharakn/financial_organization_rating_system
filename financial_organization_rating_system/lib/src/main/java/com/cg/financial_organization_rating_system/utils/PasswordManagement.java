@@ -6,15 +6,15 @@ public static String encryptedPassword(String password)
 	StringBuilder encryptedPassword = new StringBuilder("");
 	for(int i=0;i<password.length();i++)
 	{
-		if(i<password.length()/2) {
-	encryptedPassword.append(password.charAt(i)-13);}
+		if(i<=password.length()/2) {
+	encryptedPassword.append((char)(password.charAt(i)-10));
+	}
 		else
-			encryptedPassword.append(password.charAt(i)-5);		
+			encryptedPassword.append((char)(password.charAt(i)+5));		
 	}
 	return encryptedPassword.toString();
 }
-private PasswordManagement()
-{
-	
-}
+
+
+
 }
