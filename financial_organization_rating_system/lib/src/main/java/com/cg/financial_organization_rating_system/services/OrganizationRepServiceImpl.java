@@ -34,8 +34,8 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 			throw new InvalidUserNameException("Invalid user name");
 		orgrep.setOrgName(orgrepdto.getOrgname());
 		
-		if(orgrepdto.getOrgContactDetails()==0)
-			throw new InvalidContactDetailsException("Invalid contact details");
+	//	if(orgrepdto.getOrgContactDetails()==0)
+		//	throw new InvalidContactDetailsException("Invalid contact details");
 		orgrep.setOrgContactDetails(orgrepdto.getOrgContactDetails());
 		
 		if(orgrepdto.getOrgLocation()==null||orgrepdto.getOrgLocation()==" ")
@@ -72,6 +72,7 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 			throw new InvalidNetCapitalException("Sorry..Your ourganization netcapital doesnt match the rating criteria");
 		orgrep.setOrgNetCapital(orgrepudto.getOrgNetCapital());
 		orgrepo.save(orgrep);
+	
 		
 		
 	}
