@@ -1,7 +1,5 @@
 package com.cg.financial_organization_rating_system.controllers;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,11 +43,11 @@ public class OrganizationRepController {
 		return new ResponseEntity<String>("Thank you for updating organization details ",HttpStatus.OK);
 	}
  
-	@DeleteMapping
-	public ResponseEntity<String> deleteOrganizationDetails(@RequestBody OrganizationRep orgrep)
+	@DeleteMapping("/DeleteById/Id/{orgId}")
+	public ResponseEntity<String> deleteOrganizationDetails(@PathVariable int orgId)
 	{
-		orgrepservice.deleteOrgDetails(orgrep);
-		return new ResponseEntity<String>("deleted",HttpStatus.OK);
+		orgrepservice.deleteOrgDetails(orgId);
+		return new ResponseEntity<String>("Organization Details deleted",HttpStatus.OK);
 	}
 	
 	

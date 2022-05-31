@@ -7,6 +7,6 @@ import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 public interface OrganizationRepService {
     int addOrganizationRep(OrganizationRepRegistrationDto orgrepdto);
     void updateOrgDetails(OrganizationRepUpdateDetailsDto orgrepudto);
-    void deleteOrgDetails(OrganizationRep orgrep);
+    void deleteOrgDetails(int orgId);
     
 }

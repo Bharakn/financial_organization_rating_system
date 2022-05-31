@@ -31,4 +31,24 @@ public class OrganizationExceptionHandler
 	{
 	   return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND); 	
 	}
+	@ExceptionHandler(value=InvalidOrgEconomicRiskScore.class)
+	public ResponseEntity<String> exception(InvalidOrgEconomicRiskScore exception)
+	{
+		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(value=InvalidIndustryRiskScoreException.class)
+	public ResponseEntity<String> exception(InvalidIndustryRiskScoreException exception)
+	{
+		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(value=InvalidNetCapitalException.class)
+	public ResponseEntity<String> exception(InvalidNetCapitalException exception)
+	{
+		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(value=OrganizationIdNotFound.class)
+	public ResponseEntity<String> exception(OrganizationIdNotFound exception)
+	{
+		return new ResponseEntity<String> (exception.getMessage(),HttpStatus.NOT_FOUND);
+	}
 }

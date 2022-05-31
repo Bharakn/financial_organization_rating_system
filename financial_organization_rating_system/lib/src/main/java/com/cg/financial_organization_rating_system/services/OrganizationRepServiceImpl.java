@@ -1,6 +1,7 @@
 package com.cg.financial_organization_rating_system.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.cg.financial_organization_rating_system.dto.OrganizationRepRegistrationDto;
@@ -8,8 +9,12 @@ import com.cg.financial_organization_rating_system.dto.OrganizationRepUpdateDeta
 import com.cg.financial_organization_rating_system.entities.LoginDetails;
 import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 import com.cg.financial_organization_rating_system.exceptions.InvalidContactDetailsException;
+import com.cg.financial_organization_rating_system.exceptions.InvalidIndustryRiskScoreException;
+import com.cg.financial_organization_rating_system.exceptions.InvalidNetCapitalException;
+import com.cg.financial_organization_rating_system.exceptions.InvalidOrgEconomicRiskScore;
 import com.cg.financial_organization_rating_system.exceptions.InvalidPasswordException;
 import com.cg.financial_organization_rating_system.exceptions.InvalidUserNameException;
+import com.cg.financial_organization_rating_system.exceptions.OrganizationIdNotFound;
 import com.cg.financial_organization_rating_system.repository.LoginRepository;
 import com.cg.financial_organization_rating_system.repository.OrganizationRepRepository;
 
@@ -29,7 +34,7 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 			throw new InvalidUserNameException("Invalid user name");
 		orgrep.setOrgName(orgrepdto.getOrgname());
 		
-		if(orgrepdto.getOrgContactDetails()!=10||orgrepdto.getOrgContactDetails()==0)
+		if(orgrepdto.getOrgContactDetails()==0)
 			throw new InvalidContactDetailsException("Invalid contact details");
 		orgrep.setOrgContactDetails(orgrepdto.getOrgContactDetails());
 		
@@ -57,8 +62,14 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 	@Override
 	public void updateOrgDetails(OrganizationRepUpdateDetailsDto orgrepudto) {
 		OrganizationRep orgrep=orgrepo.updateDetails(orgrepudto.getOrgId());
+		if(orgrepudto.getOrgEconomicRiskScore()>10||orgrepudto.getOrgEconomicRiskScore()==0)
+			throw new InvalidOrgEconomicRiskScore("Enter valid Organization Economic Risk Score");
 		orgrep.setOrgEconomicRiskScore(orgrepudto.getOrgEconomicRiskScore());
+		if(orgrepudto.getOrgIndustryRiskScore()>10||orgrepudto.getOrgIndustryRiskScore()==0)
+			throw new InvalidIndustryRiskScoreException("Enter valid Organization Industry Risk Score");
 		orgrep.setOrgIndustryRiskScore(orgrepudto.getOrgIndustryRiskScore());
+		if(orgrepudto.getOrgNetCapital()<20)
+			throw new InvalidNetCapitalException("Sorry..Your ourganization netcapital doesnt match the rating criteria");
 		orgrep.setOrgNetCapital(orgrepudto.getOrgNetCapital());
 		orgrepo.save(orgrep);
 		
@@ -67,8 +78,11 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 
 
 	@Override
-	public void deleteOrgDetails(OrganizationRep orgrep) {
-		orgrepo.delete(orgrep);
+	public void deleteOrgDetails(int orgId) {
+		OrganizationRep orgrep=orgrepo.getOrgRepById(orgId);
+		if(orgrep==null)
+			throw new OrganizationIdNotFound("Please enter valid Organization Id");
+		orgrepo.deleteById(orgId);
 		
 	}
 
