@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.financial_organization_rating_system.dto.UserFeedBackDto;
 import com.cg.financial_organization_rating_system.dto.UsersRegistrationDto;
 import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 import com.cg.financial_organization_rating_system.entities.Users;
 import com.cg.financial_organization_rating_system.repository.LoginRepository;
+import com.cg.financial_organization_rating_system.services.FeedBackServiceImpl;
 import com.cg.financial_organization_rating_system.services.UsersServiceImpl;
 
 
@@ -75,6 +77,16 @@ public class UsersController {
 		return new ResponseEntity<String>("deleted",HttpStatus.OK);
 	}
 
+	
+	@Autowired
+	FeedBackServiceImpl feedservice;
+	
+	@PostMapping("/FeedBack")
+	public ResponseEntity<String> addFeedBack(@RequestBody UserFeedBackDto userfeedbackdto)
+	{
+		int slNo = feedservice.feedBackDetails(userfeedbackdto);
+		return new ResponseEntity<String>("Feedback added successfully and feedback serial number is ="+slNo,HttpStatus.OK);
+	}
 
 	
 	

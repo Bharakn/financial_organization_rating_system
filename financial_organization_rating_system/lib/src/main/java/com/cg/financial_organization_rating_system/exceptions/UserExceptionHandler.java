@@ -43,5 +43,15 @@ public ResponseEntity<String> exception(UserAddressAllReadyFoundException except
 	return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND);
 }
 
+@ExceptionHandler(value = UserAllReadyExistsException.class)
+public ResponseEntity<String> exception(UserAllReadyExistsException exception)
+{
+	return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND);
+}
 
+@ExceptionHandler(value = OrganizationRepEntityNotFoundException.class)
+public ResponseEntity<String> exception(OrganizationRepEntityNotFoundException exception)
+{
+	return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND);
+}
 }
