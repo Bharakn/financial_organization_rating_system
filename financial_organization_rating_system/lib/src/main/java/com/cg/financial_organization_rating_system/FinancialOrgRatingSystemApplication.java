@@ -8,9 +8,7 @@ public class FinancialOrgRatingSystemApplication {
   
 	public static void main(String[] args) {
 		SpringApplication.run(FinancialOrgRatingSystemApplication.class, args);
-		System.out.println("It is ready to use");
-		System.out.println("Hii");
-		System.out.println("exception");
+		
 	}
 
 }
