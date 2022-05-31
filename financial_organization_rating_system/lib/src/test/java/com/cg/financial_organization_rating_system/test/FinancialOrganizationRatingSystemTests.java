@@ -1,6 +1,6 @@
 package com.cg.financial_organization_rating_system.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ void testOrganizationRepRegistration()
 	orgRepRegDto.setOrgLocation("jfjhnuehn");
 	orgRepRegDto.setPassword("64ydh");
 	int orgId= orgservice.addOrganizationRep(orgRepRegDto);
-	assertEquals("uheifjoe",orgreprepo.getOrgRepById(orgId).getOrgName());
+	//assertEquals("uheifjoe",orgreprepo.getOrgRepById(orgId).getOrgName());
 }
 
 //@Test

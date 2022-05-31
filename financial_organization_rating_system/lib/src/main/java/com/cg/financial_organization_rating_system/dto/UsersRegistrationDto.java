@@ -7,10 +7,6 @@ private long userContactDetails;
 private String password;
 private int pincode;
 
-
-
-
-
 public String getUserName() {
 	return userName;
 }
@@ -49,8 +45,5 @@ public int getPincode() {
 public void setPincode(int pincode) {
 	this.pincode = pincode;
 }
-
-
-
 
 }

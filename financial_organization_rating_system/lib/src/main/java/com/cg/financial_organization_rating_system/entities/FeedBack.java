@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,16 +15,13 @@ public class FeedBack {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int slNo;
-	@Column(name="userId",nullable = false)
-	private int userId;
+	@OneToOne
+	@JoinColumn(name="userId")
+	private Users user;
 	@Column(name="OrganizationName",nullable=false,length=30)
 	private String orgName;
 	@Column(name="userName",nullable=false,length = 20)
 	private String userName;
-	@Column(name="feedback_orgDescription",nullable=false,length = 10)
-	private String feedbackByOrgDescription;
-	@Column(name="feedback_orgRating",nullable=false,length = 10)
-	private String feedbackByOrgRating;
 	@Column(name="comments",length=40)
 	private String comment;
 	public int getSlNo() {
@@ -31,12 +30,7 @@ public class FeedBack {
 	public void setSlNo(int slNo) {
 		this.slNo = slNo;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	
 	public String getOrgName() {
 		return orgName;
 	}
@@ -49,22 +43,19 @@ public class FeedBack {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getFeedbackByOrgDescription() {
-		return feedbackByOrgDescription;
-	}
-	public void setFeedbackByOrgDescription(String feedbackByOrgDescription) {
-		this.feedbackByOrgDescription = feedbackByOrgDescription;
-	}
-	public String getFeedbackByOrgRating() {
-		return feedbackByOrgRating;
-	}
-	public void setFeedbackByOrgRating(String feedbackByOrgRating) {
-		this.feedbackByOrgRating = feedbackByOrgRating;
-	}
 	public String getComment() {
 		return comment;
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	public Users getUser() {
+		return user;
+	}
+	public void setUser(Users user) {
+		this.user = user;
+	}
+	
+	
+	
 }
