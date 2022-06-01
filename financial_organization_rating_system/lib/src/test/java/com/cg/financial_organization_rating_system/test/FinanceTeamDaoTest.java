@@ -46,7 +46,7 @@ import com.cg.financial_organization_rating_system.services.FinanceTeamServiceIm
 		UpdateRatingDto updateratingdto=new UpdateRatingDto();
 		updateratingdto.setOrgId(1004);
 		updateratingdto.setRating(5);
-		service.updateRating(updateratingdto);
+		service.updateStatus(updateratingdto);
 		OrganizationRep orgrep =orgrepo.getOrgRepById(1004);
 		
 		assertEquals(5, orgrep.getOrgRating());
