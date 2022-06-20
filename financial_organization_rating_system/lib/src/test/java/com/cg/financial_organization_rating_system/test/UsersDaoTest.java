@@ -41,7 +41,7 @@ class UsersDaoTest {
 		userdto.setUserName("Mahesh");
 		userdto.setPassword("p1a2s3");
 		userdto.setUserContactDetails(9889876756l);
-		userdto.setPincode(560001);
+		userdto.setAddress("560001");
 		int userId = userservice.userRegistration(userdto);
 		assertEquals("Mahesh", userRepo.getUserById(userId).getUserName());
 		assertEquals("p1a2s3", userRepo.getUserById(userId).getPassword());

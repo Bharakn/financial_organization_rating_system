@@ -35,7 +35,6 @@ public class OrganizationRepDaoTest {
 		orgrepdtoAdd.setPassword("A12345");
 		int orgId=orgservice.addOrganizationRep(orgrepdtoAdd);
 		assertEquals("Finance1",orgrepo.getOrgRepById(orgId).getOrgName());
-		assertEquals(8787675654l,orgrepo.getOrgRepById(orgId).getOrgContactDetails());
 		assertEquals("Banglore",orgrepo.getOrgRepById(orgId).getOrgLocation());
 		assertEquals("A12345",orgrepo.getOrgRepById(orgId).getPassword());
 	}

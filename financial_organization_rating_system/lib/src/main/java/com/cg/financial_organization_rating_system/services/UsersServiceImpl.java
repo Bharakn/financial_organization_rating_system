@@ -39,7 +39,7 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public int userRegistration(UsersRegistrationDto userdto) {
         
-		Address address = adrsrepo.getAdrsById(userdto.getPincode());
+	//	Address address = adrsrepo.getAdrsById(userdto.getPincode());
 		Users usr = new Users();
 		if (userdto.getUserName() == null || userdto.getUserName() == "")
 			throw new InvalidUserNameException("User name is invalid");
@@ -53,9 +53,9 @@ public class UsersServiceImpl implements UsersService {
 			throw new InvalidPasswordException("Entered password is invalid please re-enter valid password");
 		}
 		usr.setPassword(PasswordManagement.encryptedPassword(userdto.getPassword()));
-		if (address == null)
-			throw new UserAddressNotFoundException("User Address is not found.....");
-		usr.setAddress(address);
+		//if (address == null)
+		//	throw new UserAddressNotFoundException("User Address is not found.....");
+		//usr.setAddress(address);
 		
 		userrepo.save(usr);
 
