@@ -16,6 +16,18 @@ public class Address
 	private String city;
 	@Column(name="state")
 	private String state;
+	public Address(int pincode) {
+		this.pincode=pincode;
+	}
+	public Address(int pincode, String city, String state) {
+		super();
+		this.pincode = pincode;
+		this.city = city;
+		this.state = state;
+	}
+	public Address() {
+		
+	}
 	public String getCity() {
 		return city;
 	}
@@ -34,7 +46,6 @@ public class Address
 	public void setState(String state) {
 		this.state = state;
 	}
-	
 	
 
 }

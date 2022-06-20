@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.financial_organization_rating_system.dto.OrganizationRepRegistrationDto;
 import com.cg.financial_organization_rating_system.dto.OrganizationRepUpdateDetailsDto;
-import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 import com.cg.financial_organization_rating_system.repository.LoginRepository;
 import com.cg.financial_organization_rating_system.services.OrganizationRepService;
 

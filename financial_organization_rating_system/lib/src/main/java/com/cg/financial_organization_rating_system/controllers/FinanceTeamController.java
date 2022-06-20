@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.financial_organization_rating_system.dto.UpdateRatingDto;
-import com.cg.financial_organization_rating_system.entities.FinanceTeam;
 import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 import com.cg.financial_organization_rating_system.services.FinanceTeamServiceImpl;
 
@@ -22,16 +21,7 @@ public class FinanceTeamController {
 	@Autowired
 	FinanceTeamServiceImpl financeservice;
 
-	@PostMapping
-	public ResponseEntity<String> addDetails(@RequestBody FinanceTeam finance) {
-		financeservice.addMem(finance);
-		return new ResponseEntity<String>("inserted", HttpStatus.OK);
-	}
-
-	@GetMapping("/getfinancedetails")
-	public List<FinanceTeam> getalldetails() {
-		return financeservice.getAllDetails();
-	}
+	
 
 	@GetMapping("/organizationValidation")
 	public ResponseEntity<List<OrganizationRep>> validating() {

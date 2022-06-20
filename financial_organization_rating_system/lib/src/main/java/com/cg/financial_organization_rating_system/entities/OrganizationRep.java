@@ -10,21 +10,35 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="OrganizationRep")
-public class OrganizationRep 
+public class OrganizationRep extends Users
 {
-  @Id
-  @SequenceGenerator(name="id_seq",initialValue = 1000,sequenceName = "id_seq_gen",allocationSize = 1)
-  @GeneratedValue(generator = "id_seq",strategy = GenerationType.SEQUENCE)
-  @Column(name="Organization_ID")
+public OrganizationRep() {
+	
+}
+  public OrganizationRep(String userName, String role, String password) {
+	super(userName, role, password);
+	
+}
+public OrganizationRep(int orgId, String orgName, long orgContactDetails, String orgLocation, String approvalStatus,
+			double orgNetCapital, int orgEconomicRiskScore, int orgIndustryRiskScore, int orgRating) {
+		super();
+		this.orgId = orgId;
+		this.orgName = orgName;
+		
+		this.orgLocation = orgLocation;
+		this.approvalStatus = approvalStatus;
+		this.orgNetCapital = orgNetCapital;
+		this.orgEconomicRiskScore = orgEconomicRiskScore;
+		this.orgIndustryRiskScore = orgIndustryRiskScore;
+		this.orgRating = orgRating;
+	}
+@Column(name="Organization_ID")
   private int orgId;
   @Column(name="Organization",nullable = false,length=30)
   private String orgName;
-  @Column(name="Contact_Details",nullable = false,length=10)
-  private long orgContactDetails;
+
   @Column(name="Location",nullable = false,length=10)
   private String orgLocation;
-  @Column(name="Password",nullable = false,length=6)
-  private String password;
   @Column(name="approvalStatus",length=10)
   private String approvalStatus;
   @Column(name="Netcapital_in_crore",nullable = false,columnDefinition ="numeric(5,2)")
@@ -56,18 +70,9 @@ public String getOrgName() {
 public void setOrgName(String orgName) {
 	this.orgName = orgName;
 }
-public long getOrgContactDetails() {
-	return orgContactDetails;
-}
-public void setOrgContactDetails(long orgContactDetails) {
-	this.orgContactDetails = orgContactDetails;
-}
-public String getPassword() {
-	return password;
-}
-public void setPassword(String password) {
-	this.password = password;
-}
+
+
+
 public String getApprovalStatus() {
 	return approvalStatus;
 }
