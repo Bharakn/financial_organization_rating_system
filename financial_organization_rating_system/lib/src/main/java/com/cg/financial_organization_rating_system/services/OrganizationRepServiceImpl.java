@@ -48,22 +48,22 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 		}
 
 		@Override
-		public int addOrganizationRep(OrganizationRepRegistrationDto orgrepdto) {
-			OrganizationRep orgrep=new OrganizationRep();
-			if(orgrepdto.getOrgname()==null||orgrepdto.getOrgname()==" ")
-				throw new InvalidUserNameException("Invalid user name");
-			orgrep.setOrgName(orgrepdto.getOrgname());
-			
-		
-			
-			if(orgrepdto.getOrgLocation()==null||orgrepdto.getOrgLocation()==" ")
-				throw new InvalidUserNameException("Invalid user name");
-			orgrep.setOrgLocation(orgrepdto.getOrgLocation());
-			
-			if(orgrepdto.getPassword()==null||orgrepdto.getPassword()==" ")
-				throw new InvalidPasswordException("Invalid password");
-			orgrep.setPassword(bcryptEncoder.encode(orgrepdto.getPassword()));
-			
+		public int addOrganizationRep(OrganizationRep orgrepdto) {
+//			OrganizationRep orgrep=new OrganizationRep();
+//			if(orgrepdto.getOrgname()==null||orgrepdto.getOrgname()==" ")
+//				throw new InvalidUserNameException("Invalid user name");
+//			orgrep.setOrgName(orgrepdto.getOrgname());
+//			
+//		
+//			
+//			if(orgrepdto.getOrgLocation()==null||orgrepdto.getOrgLocation()==" ")
+//				throw new InvalidUserNameException("Invalid user name");
+//			orgrep.setOrgLocation(orgrepdto.getOrgLocation());
+//			
+//			if(orgrepdto.getPassword()==null||orgrepdto.getPassword()==" ")
+//				throw new InvalidPasswordException("Invalid password");
+//			orgrep.setPassword(bcryptEncoder.encode(orgrepdto.getPassword()));
+//			
 			orgrepo.save(orgrep);
 			
 //			LoginDetails login=new LoginDetails();
@@ -78,7 +78,7 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 
 
 		@Override
-		public void updateOrgDetails(OrganizationRepUpdateDetailsDto orgrepudto) {
+		public void updateOrgDetails(OrganizationRep orgrepudto) {
 			OrganizationRep orgrep=orgrepo.updateDetails(orgrepudto.getOrgId());
 			if(orgrepudto.getOrgEconomicRiskScore()>10||orgrepudto.getOrgEconomicRiskScore()==0)
 				throw new InvalidOrgEconomicRiskScore("Enter valid Organization Economic Risk Score");

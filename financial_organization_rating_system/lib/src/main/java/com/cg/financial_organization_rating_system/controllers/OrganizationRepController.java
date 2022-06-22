@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.financial_organization_rating_system.dto.OrganizationRepRegistrationDto;
 import com.cg.financial_organization_rating_system.dto.OrganizationRepUpdateDetailsDto;
+import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 import com.cg.financial_organization_rating_system.model.ApiResponse;
 import com.cg.financial_organization_rating_system.repository.LoginRepository;
 import com.cg.financial_organization_rating_system.services.OrganizationRepService;
@@ -28,7 +29,7 @@ public class OrganizationRepController {
 	LoginRepository loginservice;
 	
 	@PostMapping
-	public ApiResponse<String> addOrganizationRep(@RequestBody OrganizationRepRegistrationDto orgrepdto)
+	public ApiResponse<String> addOrganizationRep(@RequestBody OrganizationRep orgrepdto)
 	{
 	// int orgId=	orgrepservice.addOrganizationRep(orgrepdto);
 		return new ApiResponse<String>(HttpStatus.OK.value(), "Organization Rep  Register successfully.",orgrepservice.addOrganizationRep(orgrepdto));
@@ -36,7 +37,7 @@ public class OrganizationRepController {
 	
 	
 	@PutMapping("/UpdateDetails")
-	public ResponseEntity<String> updateDetails(@RequestBody OrganizationRepUpdateDetailsDto orgrepudto)
+	public ResponseEntity<String> updateDetails(@RequestBody OrganizationRep orgrepudto)
 	{
 		orgrepservice.updateOrgDetails(orgrepudto);
 		return new ResponseEntity<String>("Thank you for updating organization details ",HttpStatus.OK);
