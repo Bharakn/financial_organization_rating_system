@@ -12,5 +12,6 @@ public interface OrganizationRepRepository extends JpaRepository<OrganizationRep
 OrganizationRep getOrgRepById(int orgId); 
 @Query(value="select org from OrganizationRep org where org.orgId=?1")
 OrganizationRep updateDetails(int orgId);
+OrganizationRep findByUserName(String username);
 }
 

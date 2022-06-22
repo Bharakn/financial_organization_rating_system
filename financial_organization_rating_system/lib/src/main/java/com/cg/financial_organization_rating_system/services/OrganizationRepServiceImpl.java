@@ -1,6 +1,12 @@
 package com.cg.financial_organization_rating_system.services;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +33,20 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 		LoginRepository loginrepo;
 		@Autowired
 		private BCryptPasswordEncoder bcryptEncoder;
+		OrganizationRep orgrep;
 
-		
+		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+			 orgrep=orgrepo.findByUserName(username);
+			if(orgrep == null){
+				throw new UsernameNotFoundException("Invalid username or password.");
+			}
+			return new org.springframework.security.core.userdetails.User(orgrep.getUserName(),orgrep.getPassword(), getAuthority());
+		}
+
+		private List<SimpleGrantedAuthority> getAuthority() {
+			return Arrays.asList(new SimpleGrantedAuthority(this.orgrep.getRole()));
+		}
+
 		@Override
 		public int addOrganizationRep(OrganizationRepRegistrationDto orgrepdto) {
 			OrganizationRep orgrep=new OrganizationRep();
@@ -48,11 +66,11 @@ public class OrganizationRepServiceImpl implements OrganizationRepService
 			
 			orgrepo.save(orgrep);
 			
-			LoginDetails login=new LoginDetails();
-			login.setPassword(bcryptEncoder.encode(orgrepdto.getPassword()));
-			login.setLoginId(orgrep.getOrgId());
-			login.setRole("OrganizationRep");
-			loginrepo.save(login);
+//			LoginDetails login=new LoginDetails();
+//			login.setPassword(bcryptEncoder.encode(orgrepdto.getPassword()));
+//			login.setLoginId(orgrep.getOrgId());
+//			login.setRole("OrganizationRep");
+//			loginrepo.save(login);
 			return orgrep.getOrgId();
 			
 			

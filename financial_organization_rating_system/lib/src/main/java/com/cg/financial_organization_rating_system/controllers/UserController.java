@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.financial_organization_rating_system.dto.UsersRegistrationDto;
+import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 import com.cg.financial_organization_rating_system.entities.Users;
 import com.cg.financial_organization_rating_system.model.ApiResponse;
 import com.cg.financial_organization_rating_system.model.UserDto;
@@ -36,7 +37,12 @@ public class UserController {
     public ApiResponse<List<Users>> listUser(){
         return new ApiResponse<>(HttpStatus.OK.value(), "User list fetched successfully.",userService.findAll());
     }
-
+    
+    @GetMapping("/browsebyentity")
+    public ApiResponse<List<OrganizationRep>> listOrganization(){
+    return new ApiResponse<List<OrganizationRep>>(HttpStatus.OK.value(),"Organization list fetched successfully.", userService.browseByEntity());
+    		}
+    
     @GetMapping("/{id}")
     public ApiResponse<Users> getOne(@PathVariable int id){
         return new ApiResponse<>(HttpStatus.OK.value(), "User fetched successfully.",userService.findById(id));

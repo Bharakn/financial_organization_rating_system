@@ -15,13 +15,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.cg.financial_organization_rating_system.dto.UsersRegistrationDto;
+import com.cg.financial_organization_rating_system.entities.OrganizationRep;
 import com.cg.financial_organization_rating_system.entities.Users;
+import com.cg.financial_organization_rating_system.exceptions.OrganizationRepEntityNotFoundException;
 import com.cg.financial_organization_rating_system.model.UserDto;
 import com.cg.financial_organization_rating_system.repository.AddressRepository;
+import com.cg.financial_organization_rating_system.repository.OrganizationRepRepository;
 import com.cg.financial_organization_rating_system.repository.UserDao;
+import com.cg.financial_organization_rating_system.repository.UsersRepository;
 
 @Service(value = "userService")
 public class UserServiceImpl implements UserDetailsService, UserService {
+	
+	@Autowired
+	UsersRepository userrepo;
 	
 	@Autowired
 	private UserDao userDao;
@@ -29,13 +36,16 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	@Autowired
 	AddressRepository adrsrepo;
 	
+	@Autowired
+	OrganizationRepRepository orgreprepo;
+	
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptEncoder;
      Users user;
     
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		 user=userDao.findByUserName(username);
+		 user=userrepo.findByUserName(username);
 		if(user == null){
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
@@ -92,5 +102,16 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 		
         return userDao.save(newUser);
     }
+
+	@Override
+	public List<OrganizationRep> browseByEntity() {
+		List<OrganizationRep>orgrepList = orgreprepo.findAll();
+		if(orgrepList.isEmpty())
+		{
+			throw new OrganizationRepEntityNotFoundException("No Organization to display...");
+		}
+		return orgrepList;
+	
+	}
 }
 

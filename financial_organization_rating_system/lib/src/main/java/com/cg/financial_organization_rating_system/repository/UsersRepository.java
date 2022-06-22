@@ -10,4 +10,5 @@ import com.cg.financial_organization_rating_system.entities.Users;
 public interface UsersRepository extends JpaRepository<Users, Integer>{
 @Query(value = "select user from Users user where user.userId=?1")
 Users getUserById(int userId);
+Users findByUserName(String username);
 }
